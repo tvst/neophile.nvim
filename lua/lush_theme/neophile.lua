@@ -65,8 +65,7 @@ local blueLight = "#A0D0F8"
 
 local magenta = "#d80860"
 
-local pinkDark = "#B060B0"
-local pink = "#A80838"
+local pink = "#B060B0"
 local pinkLight = "#F8C0F8"
 
 local gold = "#f8d800"
@@ -75,7 +74,7 @@ local fg = grayD0
 local fgInactive = gray58
 local fgActive = grayB8
 local fgDarkContrast = gray08
-local bg = gray18 -- Set this as the terminal background
+local bg = gray10
 local bgSeparators = gray20
 local bgPopup = gray28
 local bgRecessed = gray10
@@ -96,7 +95,7 @@ local theme = lush(function(injected_functions)
     --
     -- See :h highlight-groups
     --
-    Normal { fg = fg }, -- Normal text
+    Normal { fg = fg, bg = bg }, -- Normal text
     ColorColumn { bg = bgRecessed }, -- Columns set with 'colorcolumn'
     -- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor { fg = fgDarkContrast, bg = lime }, -- Character under the cursor
@@ -108,12 +107,12 @@ local theme = lush(function(injected_functions)
     Directory      { fg = blueLight, gui = "bold" }, -- Directory names (and other special names in listings)
     DiffAdd        { fg = green, bg = greenDark }, -- Diff mode: Added line |diff.txt|
     DiffChange     { bg = gray38 }, -- Diff mode: Changed line |diff.txt|
-    DiffDelete     { fg = red, bg = redDark }, -- Diff mode: Deleted line |diff.txt|
+    DiffDelete     { fg = redLight, bg = redDark }, -- Diff mode: Deleted line |diff.txt|
     DiffText       { fg = orangeLight, bg = orangeDark }, -- Diff mode: Changed text within a changed line |diff.txt|
     EndOfBuffer    { fg = fgInactive }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     TermCursor { Cursor }, -- Cursor in a focused terminal
     -- TermCursorNC   { }, -- Cursor in an unfocused terminal
-    ErrorMsg { fg = pink, gui = "bold" }, -- Error messages on the command line
+    ErrorMsg { fg = magenta, gui = "bold" }, -- Error messages on the command line
     VertSplit {}, -- Column separating vertically split windows
     Folded         { fg = fgInactive }, -- Line used for closed folds
     FoldColumn     { Folded }, -- 'foldcolumn'
@@ -126,7 +125,7 @@ local theme = lush(function(injected_functions)
     CursorLineNr   { fg = fgActive, bg = bgRecessed }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold { fg = fgActive, bg = bgRecessed }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign { fg = fgActive, bg = bgRecessed }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen { fg = pinkLight, bg = pink }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen { fg = pinkLight, bg = magenta }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- MsgArea        { }, -- Area for messages and cmdline
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg { fg = blueLight }, -- |more-prompt|
@@ -143,16 +142,16 @@ local theme = lush(function(injected_functions)
     -- PmenuExtraSel  { }, -- Popup menu: Selected item "extra text"
     PmenuSbar      { Pmenu }, -- Popup menu: Scrollbar.
     PmenuThumb     { bg = fgInactive }, -- Popup menu: Thumb of the scrollbar.
-    Question { fg = pink, gui = "bold" }, -- |hit-enter| prompt and yes/no questions
+    Question { fg = magenta, gui = "bold" }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine   { fg = blueLight }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search { fg = pinkLight, bg = pink }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+    Search { fg = pinkLight, bg = magenta }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     SpecialKey     { fg = gold, gui = "bold" }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
     SpellBad       { fg = magenta, gui = "underline" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     SpellCap       { SpellBad }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     -- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-    StatusLine { fg = fgActive, bg = bgSeparators }, -- Status line of current window
-    StatusLineNC { fg = fgInactive, bg = bgSeparators }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    StatusLine { fg = fgActive, bg = bg }, -- Status line of current window
+    StatusLineNC { fg = fgInactive, bg = bg }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     ModeMsg { StatusLine }, -- 'showmode' message (e.g., "-- INSERT -- ")
     TabLine { fg = fgInactive }, -- Tab pages line, not active tab page label
     TabLineFill { fg = fgInactive }, -- Tab pages line, where there are no labels
@@ -160,7 +159,7 @@ local theme = lush(function(injected_functions)
     -- Title          { }, -- Titles for output from ":set all", ":autocmd" etc.
     Visual { fg = tealLight, bg = teal }, -- Visual mode selection
     VisualNOS { fg = tealLight, bg = teal }, -- Visual mode selection when vim is "Not Owning the Selection".
-    WarningMsg { fg = pink, gui = "bold" }, -- Warning messages
+    WarningMsg { fg = magenta, gui = "bold" }, -- Warning messages
     Whitespace     { fg = gold }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
     -- Winseparator   { }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     WildMenu { Cursor }, -- Current match in 'wildmenu' completion
@@ -169,13 +168,13 @@ local theme = lush(function(injected_functions)
 
     NeoTreeFileName  { Normal },
     NeoTreeGitModified { Normal },
-    NeoTreeGitDeleted { fg = pink },
+    NeoTreeGitDeleted { fg = magenta },
     NeoTreeGitUnstaged { fg = orange },
     NeoTreeStaged { fg = green },
     NeoTreeGitIgnored { fg = fgInactive },
 
     WhichKey { Normal },
-    WhichKeyGroup { fg = pink },
+    WhichKeyGroup { fg = magenta },
     WhichKeyDesc { fg = blue },
     WhichKeySeparator { fg = bgSeparators },
 
@@ -197,9 +196,9 @@ local theme = lush(function(injected_functions)
     Float          { fg = emerald }, --   A floating point constant: 2.3e10
 
     Identifier     { fg = redLight }, -- (*) Any variable name
-    Function       { fg = redLight, gui = "bold" }, --   Function name (also: methods for classes)
+    Function       { fg = pinkLight, gui = "bold" }, --   Function name (also: methods for classes)
 
-    Statement      { fg = pinkDark }, -- (*) Any statement
+    Statement      { fg = pink }, -- (*) Any statement
     -- Conditional    { }, --   if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --   case, default, etc.
@@ -227,7 +226,7 @@ local theme = lush(function(injected_functions)
 
     -- Underlined     { gui = "underline" }, -- Text that stands out, HTML links
     -- Ignore         { }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
-    Error          { fg = red, bg = redDark, gui = "underline" }, -- Any erroneous construct
+    Error          { fg = redLight, bg = redDark, gui = "underline" }, -- Any erroneous construct
     -- Todo           { }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client and diagnostic system. Some
