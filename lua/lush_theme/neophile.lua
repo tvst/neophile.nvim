@@ -123,7 +123,7 @@ local theme = lush(function(injected_functions)
     CursorLineNr { fg = fgActive, bg = bgHighlighted }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold { fg = fgActive, bg = bgHighlighted }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign { fg = fgActive, bg = bgHighlighted }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen { fg = pinkLight, bg = magenta }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen { fg = tealLight, bg = bgHighlighted }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- MsgArea        { }, -- Area for messages and cmdline
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg { fg = blueLight }, -- |more-prompt|
