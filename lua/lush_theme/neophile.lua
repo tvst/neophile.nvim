@@ -69,8 +69,8 @@ local pinkLight = "#F8C0F8"
 local gold = "#f8d800"
 
 local fg = grayD0
-local fgInactive = gray58
 local fgActive = grayB8
+local fgInactive = gray58
 local fgDarkContrast = gray08
 local bg = gray10
 local bgPopup = gray28
@@ -111,7 +111,7 @@ local theme = lush(function(injected_functions)
     TermCursor { Cursor }, -- Cursor in a focused terminal
     -- TermCursorNC   { }, -- Cursor in an unfocused terminal
     ErrorMsg { fg = magenta, gui = "bold" }, -- Error messages on the command line
-    VertSplit { }, -- Column separating vertically split windows
+    VertSplit { fg = fgInactive }, -- Column separating vertically split windows
     Folded { fg = fgInactive }, -- Line used for closed folds
     FoldColumn { Folded }, -- 'foldcolumn'
     SignColumn { fg = fgInactive }, -- Column where |signs| are displayed
@@ -159,7 +159,7 @@ local theme = lush(function(injected_functions)
     VisualNOS { fg = tealLight, bg = teal }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg { fg = magenta, gui = "bold" }, -- Warning messages
     Whitespace { fg = gold }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
-    -- Winseparator   { }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
+    Winseparator   { fg = fgInactive }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     WildMenu { Cursor }, -- Current match in 'wildmenu' completion
     -- WinBar         { }, -- Window bar of current window
     -- WinBarNC       { }, -- Window bar of not-current windows
