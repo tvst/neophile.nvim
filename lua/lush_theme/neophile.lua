@@ -31,6 +31,7 @@ local hsl = lush.hsl
 local gray00 = "#000000"
 local gray08 = "#080808"
 local gray10 = "#101010"
+local gray20 = "#202020"
 local gray28 = "#282828"
 local gray38 = "#383838"
 local gray58 = "#585858"
@@ -55,8 +56,8 @@ local redDark = "#580808"
 local red = "#f83030"
 local redLight = "#ff8888"
 
-local teal = "#0078A8"
-local tealLight = "#58F8F8"
+local teal = "#0078B8"
+local tealLight = "#48F8F8"
 
 local blue = "#60B0F8"
 local blueLight = "#A0D0F8"
@@ -73,6 +74,7 @@ local fgActive = grayB8
 local fgInactive = gray58
 local fgDarkContrast = gray08
 local bg = gray10
+local bgSeparators = gray20
 local bgPopup = gray28
 local bgHighlighted = gray38
 local bgRecessed = gray00
@@ -95,9 +97,9 @@ local theme = lush(function(injected_functions)
     --
     Normal { fg = fg, bg = bg }, -- Normal text
     ColorColumn { bg = bgRecessed }, -- Columns set with 'colorcolumn'
-    -- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
+    Conceal { fg = fgInactive }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor { fg = fgDarkContrast, bg = lime }, -- Character under the cursor
-    -- CurSearch { fg = teal60, bg = teal30 }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
+    CurSearch { fg = teal, bg = tealLight }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     lCursor { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn { bg = bgHighlighted, blend = 0 }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
@@ -166,22 +168,29 @@ local theme = lush(function(injected_functions)
 
     -- NeoTree colors
     NeoTreeFileName { fg = fg },
-    NeoTreeGitModified { fg = fg },
-    NeoTreeGitDeleted { fg = magenta },
-    NeoTreeGitUnstaged { fg = orange },
-    NeoTreeStaged { fg = green },
+    NeoTreeGitModified { fg = orange },
+    NeoTreeGitUntracked { fg = red },
+    NeoTreeGitDeleted { fg = magenta, gui="underline" },
+    NeoTreeStaged { fg = green },  -- icon
+    NeoTreeGitUnstaged { fg = orange },  -- icon
     NeoTreeGitIgnored { fg = fgInactive },
     NeoTreeCursorLine { bg = bgHighlighted },
+    NeoTreeTitleBar { fg = bg, bg = blue },
+    NeoTreeFloatBorder { fg = blue },
 
     -- WhichKey colors
     WhichKey { Normal },
-    WhichKeyGroup { fg = magenta },
+    WhichKeyBorder { fg = blue },
+    WhichKeyGroup { fg = blueLight },
     WhichKeyDesc { fg = blue },
     WhichKeySeparator { fg = fgInactive },
 
     -- Fugitive status pane diffs
     DiffAdded { fg = green },
     DiffRemoved { fg = redLight },
+
+    -- Fzf
+    FzfLuaBorder { fg = blue },
 
     -- GitSign colors
     GitSignsAdd { fg = green },
@@ -248,7 +257,7 @@ local theme = lush(function(injected_functions)
     -- Keyword        { }, --   any other keyword
     Operator { fg = magenta }, --   "sizeof", "+", "*", etc.
 
-    PreProc { fg = red }, -- (*) Generic Preprocessor
+    PreProc { fg = teal }, -- (*) Generic Preprocessor
     -- Include        { }, --   Preprocessor #include
     -- Define         { }, --   Preprocessor #define
     -- Macro          { }, --   Same as Define
