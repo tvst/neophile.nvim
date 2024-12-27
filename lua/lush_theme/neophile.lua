@@ -74,10 +74,10 @@ local fgActive = grayB8
 local fgInactive = gray58
 local fgDarkContrast = gray08
 local bg = gray10
-local bgSeparators = gray20
+local bgSeparators = bg
 local bgPopup = gray28
 local bgHighlighted = gray38
-local bgRecessed = gray00
+local bgRecessed = gray08
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
@@ -150,8 +150,8 @@ local theme = lush(function(injected_functions)
     SpellCap { SpellBad }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     -- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-    StatusLine { fg = fgActive, bg = bg }, -- Status line of current window
-    StatusLineNC { fg = fgInactive, bg = bg }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    StatusLine { fg = fgActive, bg = bgSeparators }, -- Status line of current window
+    StatusLineNC { fg = fgInactive, bg = bgSeparators }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     ModeMsg { StatusLine }, -- 'showmode' message (e.g., "-- INSERT -- ")
     TabLine { fg = fgInactive }, -- Tab pages line, not active tab page label
     TabLineFill { fg = fgInactive }, -- Tab pages line, where there are no labels
