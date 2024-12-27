@@ -5,7 +5,9 @@ highlight Boolean guifg=#e0f888 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Character guifg=#58F8B0 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight ColorColumn guifg=NONE guibg=#000000 guisp=NONE blend=NONE gui=NONE
 highlight Comment guifg=#B08888 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight Conceal guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Constant guifg=#A0D0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight CurSearch guifg=#0078B8 guibg=#48F8F8 guisp=NONE blend=NONE gui=NONE
 highlight Cursor guifg=#080808 guibg=#D8F838 guisp=NONE blend=NONE gui=NONE
 highlight! link CursorIM Cursor
 highlight! link PmenuSel Cursor
@@ -41,23 +43,27 @@ highlight FloatBorder guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Folded guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight! link FoldColumn Folded
 highlight Function guifg=#60B0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight FzfLuaBorder guifg=#60B0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight GitSignsAdd guifg=#50F888 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight GitSignsChange guifg=#f8b060 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight GitSignsDelete guifg=#d80860 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Identifier guifg=#F8C0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
-highlight IncSearch guifg=#58F8F8 guibg=#0078A8 guisp=NONE blend=NONE gui=NONE
+highlight IncSearch guifg=#48F8F8 guibg=#0078B8 guisp=NONE blend=NONE gui=NONE
 highlight LineNrAbove guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight LineNrBelow guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight LspReferenceText guifg=NONE guibg=#383838 guisp=NONE blend=NONE gui=NONE
-highlight MatchParen guifg=#58F8F8 guibg=#383838 guisp=NONE blend=NONE gui=NONE
+highlight MatchParen guifg=#48F8F8 guibg=#383838 guisp=NONE blend=NONE gui=NONE
 highlight MoreMsg guifg=#A0D0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight NeoTreeCursorLine guifg=NONE guibg=#383838 guisp=NONE blend=NONE gui=NONE
 highlight NeoTreeFileName guifg=#D0D0D0 guibg=NONE guisp=NONE blend=NONE gui=NONE
-highlight NeoTreeGitDeleted guifg=#d80860 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight NeoTreeFloatBorder guifg=#60B0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight NeoTreeGitDeleted guifg=#d80860 guibg=NONE guisp=NONE blend=NONE gui=underline
 highlight NeoTreeGitIgnored guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
-highlight NeoTreeGitModified guifg=#D0D0D0 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight NeoTreeGitModified guifg=#f8b060 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight NeoTreeGitUnstaged guifg=#f8b060 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight NeoTreeGitUntracked guifg=#f83030 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight NeoTreeStaged guifg=#50F888 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight NeoTreeTitleBar guifg=#101010 guibg=#60B0F8 guisp=NONE blend=NONE gui=NONE
 highlight NonText guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight NormalFloat guifg=#D0D0D0 guibg=NONE guisp=NONE blend=0 gui=NONE
 highlight Number guifg=#e0f888 guibg=NONE guisp=NONE blend=NONE gui=NONE
@@ -65,7 +71,7 @@ highlight Operator guifg=#d80860 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Pmenu guifg=#D0D0D0 guibg=#282828 guisp=NONE blend=0 gui=NONE
 highlight! link PmenuSbar Pmenu
 highlight PmenuThumb guifg=NONE guibg=#585858 guisp=NONE blend=NONE gui=NONE
-highlight PreProc guifg=#f83030 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight PreProc guifg=#0078B8 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Question guifg=#d80860 guibg=NONE guisp=NONE blend=NONE gui=bold
 highlight QuickFixLine guifg=#A0D0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Search guifg=#F8C0F8 guibg=#d80860 guisp=NONE blend=NONE gui=NONE
@@ -85,11 +91,12 @@ highlight TabLineFill guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Title guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Type guifg=#60B0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight VertSplit guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
-highlight Visual guifg=#58F8F8 guibg=#0078A8 guisp=NONE blend=NONE gui=NONE
-highlight VisualNOS guifg=#58F8F8 guibg=#0078A8 guisp=NONE blend=NONE gui=NONE
+highlight Visual guifg=#48F8F8 guibg=#0078B8 guisp=NONE blend=NONE gui=NONE
+highlight VisualNOS guifg=#48F8F8 guibg=#0078B8 guisp=NONE blend=NONE gui=NONE
 highlight WarningMsg guifg=#d80860 guibg=NONE guisp=NONE blend=NONE gui=bold
+highlight WhichKeyBorder guifg=#60B0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight WhichKeyDesc guifg=#60B0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
-highlight WhichKeyGroup guifg=#d80860 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight WhichKeyGroup guifg=#A0D0F8 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight WhichKeySeparator guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Whitespace guifg=#f8d800 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Winseparator guifg=#585858 guibg=NONE guisp=NONE blend=NONE gui=NONE
