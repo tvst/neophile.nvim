@@ -28,6 +28,8 @@
 local lush = require("lush")
 local hsl = lush.hsl
 
+-- Palette
+
 local gray00 = "#000000"
 local gray08 = "#080808"
 local gray10 = "#101010"
@@ -35,43 +37,51 @@ local gray20 = "#202020"
 local gray28 = "#282828"
 local gray38 = "#383838"
 local gray58 = "#585858"
+local gray60 = "#606060"
 local grayB8 = "#B8B8B8"
 local grayD0 = "#D0D0D0"
-
-local lime = "#D8F838"
-
-local greenDark = "#085828"
-local green = "#50F888"
-local greenLight = "#e0f888"
-
-local emerald = "#58F8B0"
+local grayE0 = "#E0E0E0"
 
 local brown = "#B08888"
 
-local orangeDark = "#887020"
-local orange = "#f8b060"
-local orangeLight = "#f8e080"
-
 local redDark = "#580808"
-local red = "#f83030"
-local redLight = "#ff8888"
+local red = "#F86060"
+local redBright = "#FF8888"
 
-local teal = "#0078B8"
-local tealLight = "#48F8F8"
+local orangeDark = "#887020"
+local orange = "#F8B060"
+local orangeBright = "#F8E080"
 
-local blue = "#60B0F8"
-local blueLight = "#A0D0F8"
+local yellowDark = "#F8D800"
+local yellow = "#F8E860"
+local yellowBright = "#FFF0A0"
 
-local magenta = "#d80860"
+local lime = "#D8F838"
 
-local pink = "#B060B0"
-local pinkLight = "#F8C0F8"
+local greenDarker = "#085840"
+local greenDark = "#38D090"
+local green = "#58F8B0"
+local greenBright = "#D0f8B8"
 
-local gold = "#f8d800"
+local teal = "#40A0B0"
+local tealBright = "#A0EFFF"
+
+local cyan = "#0078B8"
+local cyanBright = "#48F8F8"
+
+local blueDark = "#4880D0"
+local blue = "#70C0FF"
+local blueBright = "#A0D8FF"
+
+local magenta = "#D80860"
+local magentaBright = "#FF80A8"
+
+local purple = "#B070B0"
+local purpleBright = "#F8C0F8"
 
 local fg = grayD0
 local fgActive = grayB8
-local fgInactive = gray58
+local fgInactive = gray60
 local fgDarkContrast = gray08
 local bg = gray10
 local bgSeparators = bg
@@ -99,16 +109,16 @@ local theme = lush(function(injected_functions)
     ColorColumn { bg = bgRecessed }, -- Columns set with 'colorcolumn'
     Conceal { fg = fgInactive }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor { fg = fgDarkContrast, bg = lime }, -- Character under the cursor
-    CurSearch { fg = teal, bg = tealLight }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
+    CurSearch { fg = cyan, bg = cyanBright }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     lCursor { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn { bg = bgHighlighted, blend = 0 }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine { CursorColumn }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-    Directory { fg = blueLight, gui = "bold" }, -- Directory names (and other special names in listings)
-    DiffAdd { fg = green, bg = greenDark }, -- Diff mode: Added line |diff.txt|
+    Directory { fg = blue, gui = "bold" }, -- Directory names (and other special names in listings)
+    DiffAdd { fg = green, bg = greenDarker }, -- Diff mode: Added line |diff.txt|
     DiffChange { bg = bgHighlighted }, -- Diff mode: Changed line |diff.txt|
-    DiffDelete { fg = redLight, bg = redDark }, -- Diff mode: Deleted line |diff.txt|
-    DiffText { fg = orangeLight, bg = orangeDark }, -- Diff mode: Changed text within a changed line |diff.txt|
+    DiffDelete { fg = redBright, bg = redDark }, -- Diff mode: Deleted line |diff.txt|
+    DiffText { fg = orangeBright, bg = orangeDark }, -- Diff mode: Changed text within a changed line |diff.txt|
     EndOfBuffer { fg = fgInactive }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     TermCursor { Cursor }, -- Cursor in a focused terminal
     -- TermCursorNC   { }, -- Cursor in an unfocused terminal
@@ -117,7 +127,7 @@ local theme = lush(function(injected_functions)
     Folded { fg = fgInactive }, -- Line used for closed folds
     FoldColumn { Folded }, -- 'foldcolumn'
     SignColumn { fg = fgInactive }, -- Column where |signs| are displayed
-    IncSearch { fg = tealLight, bg = teal }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    IncSearch { fg = cyanBright, bg = cyan }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute     { }, -- |:substitute| replacement text highlighting
     LineNr { Normal }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove { fg = fgInactive }, -- Line number for when the 'relativenumber' option is set, above the cursor line
@@ -125,10 +135,10 @@ local theme = lush(function(injected_functions)
     CursorLineNr { fg = fgActive, bg = bgHighlighted }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold { fg = fgActive, bg = bgHighlighted }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign { fg = fgActive, bg = bgHighlighted }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen { fg = tealLight, bg = bgHighlighted }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen { fg = cyanBright, bg = cyan, gui="bold" }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- MsgArea        { }, -- Area for messages and cmdline
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-    MoreMsg { fg = blueLight }, -- |more-prompt|
+    MoreMsg { fg = blue }, -- |more-prompt|
     NonText { fg = fgInactive }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     NormalFloat { fg = fg, blend = 0 }, -- Normal text in floating windows.
     FloatBorder { }, -- Border of floating windows.
@@ -143,10 +153,10 @@ local theme = lush(function(injected_functions)
     PmenuSbar { Pmenu }, -- Popup menu: Scrollbar.
     PmenuThumb { bg = fgInactive }, -- Popup menu: Thumb of the scrollbar.
     Question { fg = magenta, gui = "bold" }, -- |hit-enter| prompt and yes/no questions
-    QuickFixLine { fg = blueLight }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search { fg = pinkLight, bg = magenta }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-    SpecialKey { fg = gold, gui = "bold" }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-    SpellBad { fg = magenta, gui = "underline" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    QuickFixLine { fg = blue }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    Search { fg = purpleBright, bg = magenta }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+    SpecialKey { fg = yellowDark, gui = "bold" }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
+    SpellBad { fg = magenta, gui = "underdotted" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     SpellCap { SpellBad }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     -- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
@@ -157,10 +167,10 @@ local theme = lush(function(injected_functions)
     TabLineFill { fg = fgInactive }, -- Tab pages line, where there are no labels
     TabLineSel { StatusLine }, -- Tab pages line, active tab page label
     Title { gui = "" }, -- Titles for output from ":set all", ":autocmd" etc.
-    Visual { fg = tealLight, bg = teal }, -- Visual mode selection
-    VisualNOS { fg = tealLight, bg = teal }, -- Visual mode selection when vim is "Not Owning the Selection".
+    Visual { fg = cyanBright, bg = cyan }, -- Visual mode selection
+    VisualNOS { fg = cyanBright, bg = cyan }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg { fg = magenta, gui = "bold" }, -- Warning messages
-    Whitespace { fg = gold }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    Whitespace { fg = yellowDark }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
     Winseparator   { fg = fgInactive }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     WildMenu { Cursor }, -- Current match in 'wildmenu' completion
     -- WinBar         { }, -- Window bar of current window
@@ -169,8 +179,8 @@ local theme = lush(function(injected_functions)
     -- NeoTree colors
     NeoTreeFileName { fg = fg },
     NeoTreeGitModified { fg = orange },
-    NeoTreeGitUntracked { fg = red },
-    NeoTreeGitDeleted { fg = magenta, gui="underline" },
+    NeoTreeGitUntracked { fg = orange },
+    NeoTreeGitDeleted { gui="strikethrough" },
     NeoTreeStaged { fg = green },  -- icon
     NeoTreeGitUnstaged { fg = orange },  -- icon
     NeoTreeGitIgnored { fg = fgInactive },
@@ -181,13 +191,13 @@ local theme = lush(function(injected_functions)
     -- WhichKey colors
     WhichKey { Normal },
     WhichKeyBorder { fg = blue },
-    WhichKeyGroup { fg = blueLight },
+    WhichKeyGroup { fg = blue },
     WhichKeyDesc { fg = blue },
     WhichKeySeparator { fg = fgInactive },
 
     -- Fugitive status pane diffs
     DiffAdded { fg = green },
-    DiffRemoved { fg = redLight },
+    DiffRemoved { fg = redBright },
 
     -- Fzf
     FzfLuaBorder { fg = blue },
@@ -237,19 +247,21 @@ local theme = lush(function(injected_functions)
     --
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Comment { fg = brown }, -- Any comment
+    Comment { fg = brown, gui = "italic" }, -- Any comment
 
-    Constant { fg = blueLight }, -- (*) Any constant
-    String { fg = blueLight }, --   A string constant: "this is a string"
-    Character { fg = emerald }, --   A character constant: 'c', '\n'
-    Number { fg = greenLight }, --   A number constant: 234, 0xff
-    Boolean { fg = greenLight }, --   A boolean constant: TRUE, false
-    Float { fg = emerald }, --   A floating point constant: 2.3e10
+    String { fg = blue }, --   A string constant: "this is a string"
+    Character { fg = green }, --   A character constant: 'c', '\n'
+    Number { fg = green }, --   A number constant: 234, 0xff
+    Boolean { fg = green }, --   A boolean constant: TRUE, false
+    Float { fg = greenBright }, --   A floating point constant: 2.3e10
 
-    Identifier { fg = pinkLight }, -- (*) Any variable name
-    Function { fg = blue }, --   Function name (also: methods for classes)
+    Identifier { fg = fg }, -- (*) Any variable name
+    Constant { fg = green }, -- (*) Any constant
+    FunctionCall { fg = orange }, -- Custom highlight for function calls.
+    Function { FunctionCall }, --   Function name (also: methods for classes)
+    FunctionDeclaration { fg = blue, gui = "bold" }, -- Custom highlight for declarations.
 
-    Statement { fg = pink }, -- (*) Any statement
+    Statement { fg = purple }, -- (*) Any statement
     -- Conditional    { }, --   if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --   case, default, etc.
@@ -257,7 +269,7 @@ local theme = lush(function(injected_functions)
     -- Keyword        { }, --   any other keyword
     Operator { fg = magenta }, --   "sizeof", "+", "*", etc.
 
-    PreProc { fg = teal }, -- (*) Generic Preprocessor
+    PreProc { fg = blueDark }, -- (*) Generic Preprocessor
     -- Include        { }, --   Preprocessor #include
     -- Define         { }, --   Preprocessor #define
     -- Macro          { }, --   Same as Define
@@ -273,11 +285,11 @@ local theme = lush(function(injected_functions)
     -- Tag            { }, --   You can use CTRL-] on this
     -- SpecialComment { }, --   Special things inside a comment (e.g. '\n')
     -- Debug          { }, --   Debugging statements
-    Delimiter { fg = redLight }, --   Character that needs attention
+    Delimiter { fg = redBright }, --   Character that needs attention
 
-    -- Underlined     { gui = "underline" }, -- Text that stands out, HTML links
-    -- Ignore         { }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
-    Error { fg = redLight, bg = redDark, gui = "underline" }, -- Any erroneous construct
+    Underlined     { }, -- Text that stands out, HTML links
+    Ignore         { fg = fgInactive }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
+    Error { fg = redBright, bg = redDark, gui = "underdotted" }, -- Any erroneous construct
     -- Todo           { }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client and diagnostic system. Some
@@ -298,18 +310,18 @@ local theme = lush(function(injected_functions)
     DiagnosticError { fg = red }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticWarn { fg = brown }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticInfo { fg = blue }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticHint { fg = orangeLight }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticOk { fg = emerald }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticHint { fg = orangeBright }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticOk { fg = green }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticVirtualTextError { } , -- Used for "Error" diagnostic virtual text.
     -- DiagnosticVirtualTextWarn  { } , -- Used for "Warn" diagnostic virtual text.
     -- DiagnosticVirtualTextInfo  { } , -- Used for "Info" diagnostic virtual text.
     -- DiagnosticVirtualTextHint  { } , -- Used for "Hint" diagnostic virtual text.
     -- DiagnosticVirtualTextOk    { } , -- Used for "Ok" diagnostic virtual text.
-    -- DiagnosticUnderlineError   { } , -- Used to underline "Error" diagnostics.
-    -- DiagnosticUnderlineWarn    { } , -- Used to underline "Warn" diagnostics.
-    -- DiagnosticUnderlineInfo    { } , -- Used to underline "Info" diagnostics.
-    -- DiagnosticUnderlineHint    { } , -- Used to underline "Hint" diagnostics.
-    -- DiagnosticUnderlineOk      { } , -- Used to underline "Ok" diagnostics.
+    DiagnosticUnderlineError   { gui = "underdotted" } , -- Used to underline "Error" diagnostics.
+    DiagnosticUnderlineWarn    { gui = "underdotted" } , -- Used to underline "Warn" diagnostics.
+    DiagnosticUnderlineInfo    { gui = "underdotted" } , -- Used to underline "Info" diagnostics.
+    DiagnosticUnderlineHint    { gui = "underdotted" } , -- Used to underline "Hint" diagnostics.
+    DiagnosticUnderlineOk      { gui = "underdotted" } , -- Used to underline "Ok" diagnostics.
     -- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
     -- DiagnosticFloatingWarn     { } , -- Used to color "Warn" diagnostic messages in diagnostics float.
     -- DiagnosticFloatingInfo     { } , -- Used to color "Info" diagnostic messages in diagnostics float.
@@ -347,7 +359,7 @@ local theme = lush(function(injected_functions)
     -- sym"@comment"           { }, -- Comment
     -- sym"@punctuation"       { }, -- Delimiter
     -- sym"@constant"          { }, -- Constant
-    -- sym"@constant.builtin"  { }, -- Special
+    sym"@constant.builtin"  { gui = "italic" }, -- Special
     -- sym"@constant.macro"    { }, -- Define
     -- sym"@define"            { }, -- Define
     -- sym"@macro"             { }, -- Macro
@@ -358,22 +370,24 @@ local theme = lush(function(injected_functions)
     -- sym"@character.special" { }, -- SpecialChar
     -- sym"@number"            { }, -- Number
     -- sym"@boolean"           { }, -- Boolean
-    -- sym"@float"             { }, -- Float
-    -- sym"@function"          { }, -- Function
-    -- sym"@function.builtin"  { }, -- Special
-    -- sym"@function.macro"    { }, -- Macro
-    -- sym"@parameter"         { }, -- Identifier
-    -- sym"@method"            { }, -- Function
-    -- sym"@field"             { }, -- Identifier
-    -- sym"@property"          { }, -- Identifier
-    -- sym"@constructor"       { }, -- Special
+    sym"@float"             { Float }, -- Float
+    sym"@field"             { fg = blue }, -- Identifier
+    -- sym"@variable"          { Identifier }, -- Identifier
+    -- sym"@function"          { Function }, -- Function
+    sym"@function.builtin"  { gui = "italic" },
+    sym"@attribute.builtin"  { gui = "italic" },
+    sym"@function.macro"    { PreProc }, -- Macro
+    sym"@parameter"         { fg = blueBright }, -- Identifier
+    sym"@variable.parameter" { fg = blueBright }, -- Identifier
+    -- sym"@method"            { Function }, -- Function
+    sym"@property"          { fg = blue }, -- Identifier
+    -- sym"@constructor"       { FunctionCall }, -- Special
     -- sym"@conditional"       { }, -- Conditional
     -- sym"@repeat"            { }, -- Repeat
     -- sym"@label"             { }, -- Label
     -- sym"@operator"          { }, -- Operator
     -- sym"@keyword"           { }, -- Keyword
     -- sym"@exception"         { }, -- Exception
-    -- sym"@variable"          { }, -- Identifier
     -- sym"@type"              { }, -- Type
     -- sym"@type.definition"   { }, -- Typedef
     -- sym"@storageclass"      { }, -- StorageClass
@@ -382,7 +396,21 @@ local theme = lush(function(injected_functions)
     -- sym"@include"           { }, -- Include
     -- sym"@preproc"           { }, -- PreProc
     -- sym"@debug"             { }, -- Debug
-    -- sym"@tag"               { }, -- Tag
+    sym"@tag"               { FunctionCall }, -- HTML Tag
+    sym"@tag.delimiter"               { Delimiter }, -- HTML Tag delimeter
+    sym"@tag.attribute"               { fg = blueBright },
+    sym"@function.python"        { FunctionDeclaration },
+    sym"@lsp.typemod.class.declaration" { FunctionDeclaration, fg = purpleBright },
+    sym"@lsp.typemod.method.declaration" { FunctionDeclaration },
+    sym"@lsp.typemod.function.declaration" { FunctionDeclaration },
+    sym"@lsp.typemod.interface.declaration" { FunctionDeclaration },
+    DiagnosticUnnecessary { gui = "underdotted" },  -- Remove italic from Comment
+    -- sym"@function.method.call"        { FunctionCall },
+    -- sym"@function.function.call"      { FunctionCall },
+    -- sym"@function.call"        { FunctionCall },
+    -- sym"@constructor"        { FunctionCall },
+    sym"@type.builtin"  { fg = blue, gui = "italic" }, -- Builtins are italic
+    sym"@variable.builtin"  { gui = "italic"}, -- Builtins are italic
  }
 end)
 
